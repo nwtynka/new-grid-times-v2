@@ -1,14 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
+import { QUERIES } from "../../constants";
 
-const MainStory = ({
-  id,
-  title,
-  image,
-  location,
-  abstract,
-  ...delegated
-}) => {
+const MainStory = ({ id, title, image, location, abstract, ...delegated }) => {
   return (
     <Wrapper {...delegated}>
       <a href={`/story/${id}`}>
@@ -41,9 +35,22 @@ const Heading = styled.h2`
 `;
 
 const Abstract = styled.p`
+  --count-lines: 8;
+
+  @media (${QUERIES.tabletOnly}) {
+    --count-lines: 16;
+  }
+
+
   font-size: 1rem;
   margin-bottom: 1em;
   white-space: pre-wrap;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--count-lines);
+  overflow: hidden;
+
+
 `;
 
 const Location = styled.span`
